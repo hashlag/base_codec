@@ -13,7 +13,6 @@ add_library(base32
         lib/base32/decoding/decoding.cpp
         lib/base32/encoding/encoding.cpp
         lib/base32/utility/utility.h
-        lib/base32/utility/utility.cpp
 )
 
 set_target_properties(base32 PROPERTIES LINKER_LANGUAGE CXX)
@@ -35,6 +34,8 @@ include_directories(
 
 add_executable(base_encoder
         app/app.cpp
+        app/window/window.cpp
+        app/window/window.h
 )
 
 target_include_directories(base_encoder PRIVATE lib)

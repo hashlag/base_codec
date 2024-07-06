@@ -5,15 +5,15 @@
 
 namespace base32 {
 
-void DecodeStream(std::istream& in, std::ostream& out, const size_t max_buffer_size) {
-	assert(max_buffer_size >= 8 && "min required buffer size is 8 bytes");
+void DecodeStream(std::istream& in, std::ostream& out, size_t max_buffer_size) {
+	max_buffer_size = std::max(8ull, max_buffer_size);
 
 	size_t buffer_size = max_buffer_size - (max_buffer_size % 8);
 
 	std::vector<char> input_buffer(buffer_size);
 	std::vector<char> output_buffer(DecodedSize(buffer_size));
 
-	while (in.good()) {
+	while (!in.eof()) {
 		in.read(input_buffer.data(), buffer_size);
 		std::streamsize extracted = in.gcount();
 
