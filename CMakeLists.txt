@@ -53,8 +53,11 @@ target_link_libraries(base_encoder
         base32
 )
 
-#include(CMakePrintHelpers)
-#cmake_print_variables(GTKMM_LIBRARIES)
+target_compile_options(base_encoder PRIVATE -mwindows)
+target_link_options(base_encoder PRIVATE -mwindows)
+
+include(CMakePrintHelpers)
+cmake_print_variables(GTKMM_LIBRARIES)
 
 # test
 
