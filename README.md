@@ -4,7 +4,7 @@ Simple C++ Gtk3 application capable of encoding and decoding files with [Base32]
 
 This project includes custom implementations of Base32 encoding and decoding algorithms covered with UT via [the GoogleTest Framework](https://github.com/google/googletest).
 
-Prebuilt Nullsoft Install System installer is available in [Releases]().
+Prebuilt Nullsoft Install System installer for Win64 is available in [Releases](https://github.com/hashlag/base_codec/releases/).
 
 Nullsoft Install System script is also included and can be found inside `nsis/` subdirectory. 
 
