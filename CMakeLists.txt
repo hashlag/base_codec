@@ -34,16 +34,27 @@ include_directories(
 
 add_executable(base_encoder
         app/app.cpp
-        app/window/window.cpp
-        app/window/window.h
+        app/main_window/main_window.cpp
+        app/main_window/main_window.h
+        app/main_window/mode_chooser_block/mode_chooser_block.cpp
+        app/main_window/mode_chooser_block/mode_chooser_block.h
+        app/main_window/open_file_dialog/open_file_dialog.cpp
+        app/main_window/open_file_dialog/open_file_dialog.h
+        app/main_window/open_file_block/open_file_block.cpp
+        app/main_window/open_file_block/open_file_block.h
+        app/main_window/progress_dialog/progress_dialog.cpp
+        app/main_window/progress_dialog/progress_dialog.h
 )
 
-target_include_directories(base_encoder PRIVATE lib)
+target_include_directories(base_encoder PRIVATE lib app)
 
 target_link_libraries(base_encoder
         ${GTKMM_LIBRARIES}
         base32
 )
+
+#include(CMakePrintHelpers)
+#cmake_print_variables(GTKMM_LIBRARIES)
 
 # test
 
