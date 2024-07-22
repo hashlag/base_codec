@@ -22,7 +22,7 @@ template<typename InputIt, typename OutputIt>
 std::streamsize Decode(InputIt input_begin, InputIt input_end, OutputIt output_begin) {
 	std::streamsize written = 0;
 
-	while (*(input_end - 1) == kPaddingChar) { // max 6 iterations
+	while (input_begin != input_end && *(input_end - 1) == kPaddingChar) { // max 6 iterations
 		--input_end;
 	}
 
