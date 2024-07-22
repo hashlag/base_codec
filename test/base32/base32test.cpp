@@ -61,13 +61,16 @@ std::string decode_(const char* data) {
 
 // from RFC 4648
 TEST(base32, decoding) {
-		ASSERT_EQ(decode_(""),                 "");
-		ASSERT_EQ(decode_("MY======"),         "f");
-		ASSERT_EQ(decode_("MZXQ===="),         "fo");
-		ASSERT_EQ(decode_("MZXW6==="),         "foo");
-		ASSERT_EQ(decode_("MZXW6YQ="),         "foob");
-		ASSERT_EQ(decode_("MZXW6YTB"),         "fooba");
-		ASSERT_EQ(decode_("MZXW6YTBOI======"), "foobar");
+	ASSERT_EQ(decode_(""),                 "");
+	ASSERT_EQ(decode_("MY======"),         "f");
+	ASSERT_EQ(decode_("MZXQ===="),         "fo");
+	ASSERT_EQ(decode_("MZXW6==="),         "foo");
+	ASSERT_EQ(decode_("MZXW6YQ="),         "foob");
+	ASSERT_EQ(decode_("MZXW6YTB"),         "fooba");
+	ASSERT_EQ(decode_("MZXW6YTBOI======"), "foobar");
+
+	ASSERT_THROW(decode_("12======"), std::runtime_error);
+	ASSERT_THROW(decode_("MZXW0YTB"), std::runtime_error);
 }
 
 std::string decode_stream_(const char* data, const size_t buffer_size = 8) {
@@ -88,4 +91,7 @@ TEST(base32, stream_decoding) {
 	ASSERT_EQ(decode_stream_("MZXW6YQ="),         "foob");
 	ASSERT_EQ(decode_stream_("MZXW6YTB"),         "fooba");
 	ASSERT_EQ(decode_stream_("MZXW6YTBOI======"), "foobar");
+
+	ASSERT_THROW(decode_stream_("12======"), std::runtime_error);
+	ASSERT_THROW(decode_stream_("MZXW0YTB"), std::runtime_error);
 }
